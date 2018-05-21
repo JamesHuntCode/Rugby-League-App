@@ -1,0 +1,4 @@
+RugbyLeagueMobileApp.MainActivity, RugbyLeagueMobileApp;md5bde31503597186d219d1443176d662f2.MainActivity
+RugbyLeagueMobileApp.MainActivity, RugbyLeagueMobileApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5bde31503597186d219d1443176d662f2.MainActivity
+RugbyLeagueMobileApp.MainActivity;md5bde31503597186d219d1443176d662f2.MainActivity
+rugbyleaguemobileapp.MainActivity;md5bde31503597186d219d1443176d662f2.MainActivity
