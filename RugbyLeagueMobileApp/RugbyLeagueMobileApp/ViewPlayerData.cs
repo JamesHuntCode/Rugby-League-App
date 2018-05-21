@@ -22,10 +22,11 @@ namespace RugbyLeagueMobileApp
         Button addNewPlayer;
 
         // Adapters Used:
-        ArrayAdapter<Player> playeradapter = null;
+        ArrayAdapter<string> playeradapter = null;
 
         // Data Structures Used:
-        List<Player> playerJSONdata;
+        List<Player> RawJSONdata;
+        List<string> formattedJSONdata;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -37,12 +38,29 @@ namespace RugbyLeagueMobileApp
             // Set Widgets:
             addNewPlayer = FindViewById<Button>(Resource.Id.btnAddPlayer);
 
-            // Get Data
-            playerJSONdata = services.GetAllPlayerData();
+            // Fetch & Format Data
+            RawJSONdata = services.GetAllPlayerData();
+            formattedJSONdata = new List<string>();
+
+            for (int i = 0; i < RawJSONdata.Count; i++)
+            {
+                string displayme = "";
+
+                if (RawJSONdata[i].Nickname != String.Empty && RawJSONdata[i].Nickname != null)
+                {
+                    displayme = RawJSONdata[i].Nickname;
+                }
+                else
+                {
+                    displayme = RawJSONdata[i].FirstName + " " + RawJSONdata[i].LastName;
+                }
+
+                formattedJSONdata.Add(displayme);
+            }
 
             // Configure ListView
             players = FindViewById<ListView>(Resource.Id.lvPlayers);
-            playeradapter = new ArrayAdapter<Player>(this, Android.Resource.Layout.SimpleListItem1, playerJSONdata);
+            playeradapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, formattedJSONdata);
             players.Adapter = playeradapter;
 
             // Handle Clicks:
@@ -50,7 +68,8 @@ namespace RugbyLeagueMobileApp
             // Add New Player Button
             addNewPlayer.Click += delegate
             {
-
+                Intent newActivity = new Intent(this, typeof(AddPlayer));
+                StartActivity(newActivity);
             };
 
             // Players ListView
