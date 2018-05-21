@@ -57,6 +57,7 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddPlayer.cs" />
     <Compile Include="CreateNewTeam.cs" />
     <Compile Include="Models\AppServices.cs" />
     <Compile Include="MainActivity.cs" />
@@ -82,6 +83,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\ViewPlayers.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AddPlayer.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

@@ -32,18 +32,21 @@ namespace RugbyLeagueMobileApp
         /// Method to read all data from player data json file.
         /// </summary>
         /// <returns></returns>
-        public List<string> GetAllPlayerData()
+        public List<Player> GetAllPlayerData()
         {
-            return new List<string>();
+            return ReadFile(playerdata);
         }
 
         /// <summary>
-        /// Method to update data held on all players.
+        /// Method to add a new player to JSON data file.
         /// </summary>
-        /// <returns></returns>
-        public bool UpdateAllPlayerData()
+        /// <param name="newPlayer"></param>
+        public void AddNewPlayer(Player newPlayer)
         {
-            return true;
+            List<Player> players = GetAllPlayerData();
+            players.Add(newPlayer);
+
+            UpdateAllPlayerData(players);
         }
 
         /// <summary>
@@ -52,58 +55,57 @@ namespace RugbyLeagueMobileApp
         /// <returns></returns>
         public bool UserHasTeam()
         {
-            return true;
+            return ReadFile(teamdata).Count > 0;
         }
 
-        // METHODS ONLY USED WITHIN THIS CLASS (COMPLETELY PRIVATE):
+        /// <summary>
+        /// Method to determine if user has added players to their records.
+        /// </summary>
+        /// <returns></returns>
+        public bool UserHasAddedPlayers()
+        {
+            return ReadFile(playerdata).Count > 0;
+        }
+
+        // PRIVATE METHODS:
+
+        /// <summary>
+        /// Method to update data held on all players.
+        /// </summary>
+        /// <returns></returns>
+        private void UpdateAllPlayerData(List<Player> newdata)
+        {
+            WriteFile(playerdata, newdata);
+        }
 
         /// <summary>
         /// Method to read JSON data from a specified file path.
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        private List<Player> ReadFile(string path)
+        private List<Player> ReadFile(System.IO.Stream path)
         {
             List<Player> data = new List<Player>();
 
-            try
+            using (StreamReader SR = new StreamReader(path))
             {
-                using (StreamReader SR = new StreamReader(path))
-                {
-                    string jsondata = SR.ReadToEnd();
-                    data = JsonConvert.DeserializeObject<List<Player>>(jsondata);
-                }
-            }
-            catch (Exception)
-            {
-                throw;
+                string jsondata = SR.ReadToEnd();
+                data = JsonConvert.DeserializeObject<List<Player>>(jsondata);
             }
 
             return data;
         }
 
         /// <summary>
-        /// Method to write JSON to a specified file.
+        /// Method to write JSON data to a specified file.
         /// </summary>
         /// <param name="path"></param>
         /// <param name="data"></param>
         /// <returns></returns>
-        private bool WriteFile(string path, List<Player> data)
+        private void WriteFile(System.IO.Stream path, List<Player> data)
         {
-            bool success = true;
-
-            try
-            {
-                string updatedJSONdata = JsonConvert.SerializeObject(data, Formatting.Indented);
-                File.WriteAllText(path, updatedJSONdata);
-            }
-            catch (Exception)
-            {
-                success = false;
-                throw;
-            }
-
-            return success;
+            string updatedJSONdata = JsonConvert.SerializeObject(data, Formatting.Indented);
+            File.WriteAllText(Convert.ToString(path), updatedJSONdata);
         }
     }
 }

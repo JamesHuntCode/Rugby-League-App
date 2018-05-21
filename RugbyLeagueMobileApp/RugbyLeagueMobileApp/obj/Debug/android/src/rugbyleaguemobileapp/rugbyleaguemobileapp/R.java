@@ -11,17 +11,20 @@ public final class R {
     public static final class attr {
     }
     public static final class id {
+        public static final int btnAddPlayer=0x7f050003;
         public static final int btnCreateNewTeam=0x7f050001;
         public static final int btnViewPlayerData=0x7f050002;
         public static final int btnViewTeam=0x7f050000;
-        public static final int button1=0x7f050003;
-        public static final int listView1=0x7f050004;
+        public static final int button1=0x7f050005;
+        public static final int listView1=0x7f050006;
+        public static final int lvPlayers=0x7f050004;
     }
     public static final class layout {
-        public static final int createteam=0x7f030000;
-        public static final int main=0x7f030001;
-        public static final int viewplayers=0x7f030002;
-        public static final int viewteam=0x7f030003;
+        public static final int addplayer=0x7f030000;
+        public static final int createteam=0x7f030001;
+        public static final int main=0x7f030002;
+        public static final int viewplayers=0x7f030003;
+        public static final int viewteam=0x7f030004;
     }
     public static final class mipmap {
         public static final int icon=0x7f020000;

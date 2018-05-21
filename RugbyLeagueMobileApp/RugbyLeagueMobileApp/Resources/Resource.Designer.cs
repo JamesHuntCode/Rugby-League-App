@@ -44,6 +44,9 @@ namespace RugbyLeagueMobileApp
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050003
+			public const int btnAddPlayer = 2131034115;
+			
 			// aapt resource value: 0x7f050001
 			public const int btnCreateNewTeam = 2131034113;
 			
@@ -53,11 +56,14 @@ namespace RugbyLeagueMobileApp
 			// aapt resource value: 0x7f050000
 			public const int btnViewTeam = 2131034112;
 			
-			// aapt resource value: 0x7f050003
-			public const int button1 = 2131034115;
+			// aapt resource value: 0x7f050005
+			public const int button1 = 2131034117;
+			
+			// aapt resource value: 0x7f050006
+			public const int listView1 = 2131034118;
 			
 			// aapt resource value: 0x7f050004
-			public const int listView1 = 2131034116;
+			public const int lvPlayers = 2131034116;
 			
 			static Id()
 			{
@@ -73,16 +79,19 @@ namespace RugbyLeagueMobileApp
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int CreateTeam = 2130903040;
+			public const int AddPlayer = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int Main = 2130903041;
+			public const int CreateTeam = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int ViewPlayers = 2130903042;
+			public const int Main = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int ViewTeam = 2130903043;
+			public const int ViewPlayers = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int ViewTeam = 2130903044;
 			
 			static Layout()
 			{

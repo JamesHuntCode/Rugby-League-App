@@ -38,6 +38,7 @@ namespace RugbyLeagueMobileApp
                 if (services.UserHasTeam())
                 {
                     Intent newActivity = new Intent(this, typeof(ViewCurrentTeam));
+
                     StartActivity(newActivity);
                 }
                 else
@@ -100,9 +101,9 @@ namespace RugbyLeagueMobileApp
 
                     confirm.Show();
                 }
-                // If they don't have an active team, go to next activity.
                 else
                 {
+                    // If they don't have an active team, go to next activity.
                     Intent newActivity = new Intent(this, typeof(CreateNewTeam));
                     StartActivity(newActivity);
                 }
@@ -111,8 +112,15 @@ namespace RugbyLeagueMobileApp
             // View All Player Data
             viewPlayerData.Click += delegate
             {
-                Intent newActivity = new Intent(this, typeof(ViewPlayerData));
-                StartActivity(newActivity);
+                if (services.UserHasAddedPlayers())
+                {
+                    Intent newActivity = new Intent(this, typeof(ViewPlayerData));
+                    StartActivity(newActivity);
+                }
+                else
+                {
+                    Toast.MakeText(this, "You don't have any player data to view.", ToastLength.Long).Show();
+                }
             };
         }
     }

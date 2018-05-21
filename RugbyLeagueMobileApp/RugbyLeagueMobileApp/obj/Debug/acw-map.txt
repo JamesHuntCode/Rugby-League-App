@@ -1,3 +1,7 @@
+RugbyLeagueMobileApp.AddPlayer, RugbyLeagueMobileApp;md5bde31503597186d219d1443176d662f2.AddPlayer
+RugbyLeagueMobileApp.AddPlayer, RugbyLeagueMobileApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5bde31503597186d219d1443176d662f2.AddPlayer
+RugbyLeagueMobileApp.AddPlayer;md5bde31503597186d219d1443176d662f2.AddPlayer
+rugbyleaguemobileapp.AddPlayer;md5bde31503597186d219d1443176d662f2.AddPlayer
 RugbyLeagueMobileApp.CreateNewTeam, RugbyLeagueMobileApp;md5bde31503597186d219d1443176d662f2.CreateNewTeam
 RugbyLeagueMobileApp.CreateNewTeam, RugbyLeagueMobileApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5bde31503597186d219d1443176d662f2.CreateNewTeam
 RugbyLeagueMobileApp.CreateNewTeam;md5bde31503597186d219d1443176d662f2.CreateNewTeam
