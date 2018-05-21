@@ -8,6 +8,8 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace RugbyLeagueMobileApp
 {
@@ -20,6 +22,11 @@ namespace RugbyLeagueMobileApp
         /// Path of JSON file which contains player data.
         /// </summary>
         private System.IO.Stream playerdata = Application.Context.Assets.Open("playerdata.json");
+
+        /// <summary>
+        /// Path of JSON file which contains team summary data.
+        /// </summary>
+        private System.IO.Stream teamdata = Application.Context.Assets.Open("team.json");
 
         /// <summary>
         /// Method to read all data from player data json file.
@@ -40,13 +47,63 @@ namespace RugbyLeagueMobileApp
         }
 
         /// <summary>
-        /// Method to update data held on one specific player.
+        /// Method to determine if user has already created a team.
         /// </summary>
-        /// <param name="playerToBeUpdated"></param>
         /// <returns></returns>
-        public bool UpdateIndividualPlayerData(Player playerToBeUpdated)
+        public bool UserHasTeam()
         {
             return true;
+        }
+
+        // METHODS ONLY USED WITHIN THIS CLASS (COMPLETELY PRIVATE):
+
+        /// <summary>
+        /// Method to read JSON data from a specified file path.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        private List<Player> ReadFile(string path)
+        {
+            List<Player> data = new List<Player>();
+
+            try
+            {
+                using (StreamReader SR = new StreamReader(path))
+                {
+                    string jsondata = SR.ReadToEnd();
+                    data = JsonConvert.DeserializeObject<List<Player>>(jsondata);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return data;
+        }
+
+        /// <summary>
+        /// Method to write JSON to a specified file.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        private bool WriteFile(string path, List<Player> data)
+        {
+            bool success = true;
+
+            try
+            {
+                string updatedJSONdata = JsonConvert.SerializeObject(data, Formatting.Indented);
+                File.WriteAllText(path, updatedJSONdata);
+            }
+            catch (Exception)
+            {
+                success = false;
+                throw;
+            }
+
+            return success;
         }
     }
 }

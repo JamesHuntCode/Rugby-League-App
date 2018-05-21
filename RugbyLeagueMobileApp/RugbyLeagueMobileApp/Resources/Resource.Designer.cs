@@ -53,6 +53,12 @@ namespace RugbyLeagueMobileApp
 			// aapt resource value: 0x7f050000
 			public const int btnViewTeam = 2131034112;
 			
+			// aapt resource value: 0x7f050003
+			public const int button1 = 2131034115;
+			
+			// aapt resource value: 0x7f050004
+			public const int listView1 = 2131034116;
+			
 			static Id()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -67,7 +73,16 @@ namespace RugbyLeagueMobileApp
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int CreateTeam = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int Main = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int ViewPlayers = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int ViewTeam = 2130903043;
 			
 			static Layout()
 			{

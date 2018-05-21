@@ -18,3 +18,6 @@ C:\git\Rugby-League-App\RugbyLeagueMobileApp\RugbyLeagueMobileApp\obj\Debug\uplo
 C:\git\Rugby-League-App\RugbyLeagueMobileApp\RugbyLeagueMobileApp\bin\Debug\RugbyLeagueMobileApp.dll.mdb
 C:\git\Rugby-League-App\RugbyLeagueMobileApp\RugbyLeagueMobileApp\obj\Debug\android\assets\RugbyLeagueMobileApp.dll.mdb
 C:\git\Rugby-League-App\RugbyLeagueMobileApp\RugbyLeagueMobileApp\obj\Debug\RugbyLeagueMobileApp.csprojResolveAssemblyReference.cache
+C:\git\Rugby-League-App\RugbyLeagueMobileApp\RugbyLeagueMobileApp\obj\Debug\res\layout\viewteam.xml
+C:\git\Rugby-League-App\RugbyLeagueMobileApp\RugbyLeagueMobileApp\obj\Debug\res\layout\createteam.xml
+C:\git\Rugby-League-App\RugbyLeagueMobileApp\RugbyLeagueMobileApp\obj\Debug\res\layout\viewplayers.xml
