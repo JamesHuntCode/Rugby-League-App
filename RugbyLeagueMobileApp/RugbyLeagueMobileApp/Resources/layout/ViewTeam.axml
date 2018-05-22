@@ -2,16 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:padding="10dp"
     android:layout_height="match_parent">
     <Button
-        android:text="Button"
+        android:text="Add Player To Team"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button1" />
+        android:padding="5dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="22sp"
+        android:background="#117BF3"
+        android:textColor="#ffffff"
+        android:id="@+id/btnAddNewPlayerToTeam" />
     <ListView
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listView1" />
+        android:id="@+id/lvTeamPlayers" />
 </LinearLayout>

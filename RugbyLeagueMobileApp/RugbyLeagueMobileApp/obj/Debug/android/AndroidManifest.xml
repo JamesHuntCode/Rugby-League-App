@@ -5,7 +5,7 @@
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <application android:allowBackup="true" android:icon="@mipmap/icon" android:label="@string/app_name" android:name="android.app.Application" android:debuggable="true">
-    <activity android:label="AddPlayer" android:name="md5bde31503597186d219d1443176d662f2.AddPlayer" />
+    <activity android:label="Loading..." android:name="md5bde31503597186d219d1443176d662f2.AddPlayer" />
     <activity android:label="Loading..." android:name="md5bde31503597186d219d1443176d662f2.CreateNewTeam" />
     <activity android:icon="@mipmap/icon" android:label="Launching App..." android:name="md5bde31503597186d219d1443176d662f2.MainActivity">
       <intent-filter>

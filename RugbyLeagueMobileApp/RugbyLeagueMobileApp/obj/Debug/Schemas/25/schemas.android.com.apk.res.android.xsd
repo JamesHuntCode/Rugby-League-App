@@ -2,7 +2,7 @@
 <xs:schema xmlns:android="http://schemas.android.com/apk/res/android" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res/android" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>21/05/2018 23:27:31</xs:documentation>
+    <xs:documentation>22/05/2018 01:27:09</xs:documentation>
   </xs:annotation>
   <xs:attribute name="accessibilityLiveRegion">
     <xs:annotation>
@@ -16898,13 +16898,20 @@
           <xs:restriction base="xs:string">
             <xs:enumeration value="@+id/" />
             <xs:enumeration value="@+id/checkedTextView1" />
+            <xs:enumeration value="@id/btnAddNewPlayerToTeam" />
             <xs:enumeration value="@id/btnAddPlayer" />
+            <xs:enumeration value="@id/btnAddPlayerToTeam" />
             <xs:enumeration value="@id/btnCreateNewTeam" />
+            <xs:enumeration value="@id/btnFinished" />
             <xs:enumeration value="@id/btnViewPlayerData" />
             <xs:enumeration value="@id/btnViewTeam" />
-            <xs:enumeration value="@id/button1" />
-            <xs:enumeration value="@id/listView1" />
+            <xs:enumeration value="@id/etNumberInput" />
+            <xs:enumeration value="@id/lvNewTeam" />
             <xs:enumeration value="@id/lvPlayers" />
+            <xs:enumeration value="@id/lvTeamPlayers" />
+            <xs:enumeration value="@id/spinnerPlayerSelector" />
+            <xs:enumeration value="@id/tvAssignNumber" />
+            <xs:enumeration value="@id/tvSelectPlayer" />
             <xs:enumeration value="@android:id/accessibilityActionContextClick" />
             <xs:enumeration value="@android:id/accessibilityActionScrollDown" />
             <xs:enumeration value="@android:id/accessibilityActionScrollLeft" />

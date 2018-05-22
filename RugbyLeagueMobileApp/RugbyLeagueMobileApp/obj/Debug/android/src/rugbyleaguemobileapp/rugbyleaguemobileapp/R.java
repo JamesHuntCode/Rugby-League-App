@@ -11,13 +11,20 @@ public final class R {
     public static final class attr {
     }
     public static final class id {
-        public static final int btnAddPlayer=0x7f050003;
-        public static final int btnCreateNewTeam=0x7f050001;
-        public static final int btnViewPlayerData=0x7f050002;
-        public static final int btnViewTeam=0x7f050000;
-        public static final int button1=0x7f050005;
-        public static final int listView1=0x7f050006;
-        public static final int lvPlayers=0x7f050004;
+        public static final int btnAddNewPlayerToTeam=0x7f05000c;
+        public static final int btnAddPlayer=0x7f05000a;
+        public static final int btnAddPlayerToTeam=0x7f050004;
+        public static final int btnCreateNewTeam=0x7f050008;
+        public static final int btnFinished=0x7f050005;
+        public static final int btnViewPlayerData=0x7f050009;
+        public static final int btnViewTeam=0x7f050007;
+        public static final int etNumberInput=0x7f050003;
+        public static final int lvNewTeam=0x7f050006;
+        public static final int lvPlayers=0x7f05000b;
+        public static final int lvTeamPlayers=0x7f05000d;
+        public static final int spinnerPlayerSelector=0x7f050001;
+        public static final int tvAssignNumber=0x7f050002;
+        public static final int tvSelectPlayer=0x7f050000;
     }
     public static final class layout {
         public static final int addplayer=0x7f030000;

@@ -77,7 +77,7 @@ namespace RugbyLeagueMobileApp
         }
 
         /// <summary>
-        /// User had clicked on a player in the ListView.
+        /// User has clicked on a player in the ListView.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="event args"></param>

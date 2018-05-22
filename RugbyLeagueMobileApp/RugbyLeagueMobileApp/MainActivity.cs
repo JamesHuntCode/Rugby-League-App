@@ -23,7 +23,8 @@ namespace RugbyLeagueMobileApp
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.Main);
-            ActionBar.Title = "Welcome, " + currentUser + "!";
+            ActionBar.Title = "Rugby League - Home";
+            ActionBar.Subtitle = "Welcome back, " + currentUser + ".";
 
             // Set Widgets:
             viewCurrentTeam     = FindViewById<Button>(Resource.Id.btnViewTeam);
@@ -103,9 +104,41 @@ namespace RugbyLeagueMobileApp
                 }
                 else
                 {
-                    // If they don't have an active team, go to next activity.
-                    Intent newActivity = new Intent(this, typeof(CreateNewTeam));
-                    StartActivity(newActivity);
+                    // If they don't have an active team, go to next activity *(IF THEY HAVE PLAYER DATA RECORDED)*.
+                    if (services.GetAllPlayerData().Count > 0)
+                    {
+                        Intent newActivity = new Intent(this, typeof(CreateNewTeam));
+                        StartActivity(newActivity);
+                    }
+                    else
+                    {
+                        // Ask user if they wish to start adding players*
+                        AlertDialog.Builder confirm = new AlertDialog.Builder(this);
+                        confirm.SetTitle("Confirm");
+
+                        string line1 = "You can't create a team until you add some player data.";
+                        string line2 = "Do you want to add player data now?";
+
+                        string message = line1 + "\n\n" + line2;
+                        confirm.SetMessage(message);
+
+                        confirm.SetPositiveButton("Yes", delegate
+                        {
+                            Intent newActivity = new Intent(this, typeof(AddPlayer));
+                            StartActivity(newActivity);
+
+                            confirm.Dispose();
+                        });
+
+                        confirm.SetNegativeButton("No", delegate
+                        {
+                            Toast.MakeText(this, "Add players before creating a team.", ToastLength.Long).Show();
+
+                            confirm.Dispose();
+                        });
+
+                        confirm.Show();
+                    }
                 }
             };
 

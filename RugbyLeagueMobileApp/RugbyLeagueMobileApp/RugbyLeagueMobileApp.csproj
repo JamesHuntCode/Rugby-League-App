@@ -79,13 +79,13 @@
     <AndroidResource Include="Resources\layout\ViewTeam.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\CreateTeam.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\ViewPlayers.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\AddPlayer.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\CreateTeam.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
