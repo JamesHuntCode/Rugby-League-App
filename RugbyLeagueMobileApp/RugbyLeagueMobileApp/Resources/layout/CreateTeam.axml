@@ -8,6 +8,7 @@
         android:text="Select Player:"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="18sp"
         android:layout_marginBottom="10dp"
         android:id="@+id/tvSelectPlayer" />
     <Spinner
@@ -19,13 +20,25 @@
         android:text="Assign Player Number:"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:textSize="18sp"
         android:id="@+id/tvAssignNumber" />
     <EditText
         android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/etNumberInput" />
+    <TextView
+        android:text="Assign Player Position:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/tvAssignPosition" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/etPlayerPosition" />
     <Button
         android:text="Add Player To Team"
         android:layout_width="match_parent"
@@ -50,6 +63,8 @@
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="291.5dp"
+        android:layout_height="match_parent"
+        android:divider="#000000"
+        android:dividerHeight="10dp"
         android:id="@+id/lvNewTeam" />
 </LinearLayout>

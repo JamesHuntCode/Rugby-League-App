@@ -24,3 +24,4 @@ C:\git\Rugby-League-App\RugbyLeagueMobileApp\RugbyLeagueMobileApp\obj\Debug\res\
 C:\git\Rugby-League-App\RugbyLeagueMobileApp\RugbyLeagueMobileApp\bin\Debug\Newtonsoft.Json.dll
 C:\git\Rugby-League-App\RugbyLeagueMobileApp\RugbyLeagueMobileApp\bin\Debug\Newtonsoft.Json.xml
 C:\git\Rugby-League-App\RugbyLeagueMobileApp\RugbyLeagueMobileApp\obj\Debug\res\layout\addplayer.xml
+C:\git\Rugby-League-App\RugbyLeagueMobileApp\RugbyLeagueMobileApp\obj\Debug\res\drawable\icon.png

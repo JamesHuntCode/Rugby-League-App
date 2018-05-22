@@ -19,8 +19,5 @@ namespace RugbyLeagueMobileApp
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Nickname { get; set; }
-
-        //public int playerNumber { get; set; }
-        public string playerPosition { get; set; }
     }
 }

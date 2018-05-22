@@ -7,7 +7,7 @@ using Android.Content;
 
 namespace RugbyLeagueMobileApp
 {
-    [Activity(Label = "Launching App...", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Label = "Team Designer", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         private AppServices services = new AppServices();
@@ -23,7 +23,7 @@ namespace RugbyLeagueMobileApp
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.Main);
-            ActionBar.Title = "Rugby League - Home";
+            ActionBar.Title = "Team Designer - Home";
             ActionBar.Subtitle = "Welcome back, " + currentUser + ".";
 
             // Set Widgets:

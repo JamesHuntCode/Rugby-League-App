@@ -50,6 +50,15 @@ namespace RugbyLeagueMobileApp
         }
 
         /// <summary>
+        /// Method to write new team data to JSON file.
+        /// </summary>
+        /// <param name="data"></param>
+        public void CreateNewTeam(List<Player> data)
+        {
+            WriteFile(teamdata, data);
+        }
+
+        /// <summary>
         /// Method to determine if user has already created a team.
         /// </summary>
         /// <returns></returns>
@@ -105,7 +114,11 @@ namespace RugbyLeagueMobileApp
         private void WriteFile(System.IO.Stream path, List<Player> data)
         {
             string updatedJSONdata = JsonConvert.SerializeObject(data, Formatting.Indented);
-            File.WriteAllText(Convert.ToString(path), updatedJSONdata);
+
+            using (StreamWriter SW = new StreamWriter(path))
+            {
+                SW.Write(updatedJSONdata);
+            }
         }
     }
 }

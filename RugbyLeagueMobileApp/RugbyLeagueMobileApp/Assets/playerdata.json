@@ -2,8 +2,26 @@
   {
     "FirstName": "James",
     "LastName": "Hunt",
-    "Nickname": "",
-    //"PlayerNumber": 7,
-    "playerPosition": "Flanker"
+    "Nickname": ""
+  },
+  {
+    "FirstName": "Stephanie",
+    "LastName": "Nicks",
+    "Nickname": ""
+  },
+  {
+    "FirstName": "Axel",
+    "LastName": "Nicks",
+    "Nickname": ""
+  },
+  {
+    "FirstName": "Dave",
+    "LastName": "Johns",
+    "Nickname": ""
+  },
+  {
+    "FirstName": "Eric",
+    "LastName": "Smiths",
+    "Nickname": ""
   }
 ]
