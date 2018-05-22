@@ -2,26 +2,36 @@
   {
     "FirstName": "James",
     "LastName": "Hunt",
-    "Nickname": ""
+    "Nickname": "",
+    "PlayerNumber": "",
+    "PlayerPosition": ""
   },
   {
     "FirstName": "Stephanie",
     "LastName": "Nicks",
-    "Nickname": ""
+    "Nickname": "",
+    "PlayerNumber": "",
+    "PlayerPosition": ""
   },
   {
     "FirstName": "Axel",
     "LastName": "Nicks",
-    "Nickname": ""
+    "Nickname": "",
+    "playerNumber": "",
+    "playerPosition": ""
   },
   {
     "FirstName": "Dave",
     "LastName": "Johns",
-    "Nickname": ""
+    "Nickname": "",
+    "PlayerNumber": "",
+    "PlayerPosition": ""
   },
   {
     "FirstName": "Eric",
     "LastName": "Smiths",
-    "Nickname": ""
+    "Nickname": "",
+    "PlayerNumber": "",
+    "PlayerPosition": ""
   }
 ]

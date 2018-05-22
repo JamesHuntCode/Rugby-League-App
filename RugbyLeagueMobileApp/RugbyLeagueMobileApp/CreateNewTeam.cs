@@ -30,6 +30,7 @@ namespace RugbyLeagueMobileApp
         ArrayAdapter<string> addedPlayersAdapter    = null;
 
         // Data Structures Used:
+        List<Player> newTeamMembers = new List<Player>();
         List<Player> RawJSONdata;
         List<string> formattedJSONdata;
         List<string> addedPlayerData;
@@ -75,6 +76,8 @@ namespace RugbyLeagueMobileApp
             playerSelectorAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             playerSelector.Adapter = playerSelectorAdapter;
 
+            playerSelector.ItemSelected += (object sender, AdapterView.ItemSelectedEventArgs e) => PlayerSelected(sender, e);
+
             // Populate & Refresh Spinner Data
             for (int i = 0; i < formattedJSONdata.Count; i++)
             {
@@ -84,7 +87,7 @@ namespace RugbyLeagueMobileApp
             playerSelectorAdapter.NotifyDataSetChanged();
 
             // Set currently selected spinner item.
-            currentlySelectedPlayer = RawJSONdata[0].FirstName + " " + RawJSONdata[0].LastName;
+            currentlySelectedPlayer = playerSelectorAdapter.GetItem(0);
 
             // Configure ListView:
             addedPlayerData = new List<string>();
@@ -108,7 +111,14 @@ namespace RugbyLeagueMobileApp
                     addedPlayersAdapter.Add(displayMe);
 
                     playerSelectorAdapter.Remove(currentlySelectedPlayer);
-                    currentlySelectedPlayer = RawJSONdata[0].FirstName + " " + RawJSONdata[0].LastName;
+
+                    // Push new team member to array:
+                    Player newTeamMember = new Player();
+                    newTeamMember.FirstName = currentlySelectedPlayer.Split(' ')[0];
+                    newTeamMember.LastName = currentlySelectedPlayer.Split(' ')[1];
+                    newTeamMember.PlayerNumber = numberSelector.Text;
+                    newTeamMember.PlayerPosition = positionSelector.Text;
+                    newTeamMembers.Add(newTeamMember);
 
                     // Prepare for next input:
                     numberSelector.Text     = "";
@@ -117,6 +127,7 @@ namespace RugbyLeagueMobileApp
                     // Hide keyboard:
                     InputMethodManager inputManager = (InputMethodManager)this.GetSystemService(Context.InputMethodService);
                     inputManager.HideSoftInputFromWindow(this.CurrentFocus.WindowToken, HideSoftInputFlags.NotAlways);
+                    currentlySelectedPlayer = playerSelectorAdapter.GetItem(0);
                 }
                 else
                 {
@@ -129,10 +140,6 @@ namespace RugbyLeagueMobileApp
             save.Click += delegate
             {
                 // Save all team data:
-                List<Player> newTeamMembers = new List<Player>();
-
-                
-
                 services.CreateNewTeam(newTeamMembers);
 
                 // Navigate to view team activity:
@@ -147,7 +154,17 @@ namespace RugbyLeagueMobileApp
         }
 
         /// <summary>
-        /// User had clicked on a player in the ListView.
+        /// User has selected an item in the drop down list of players.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void PlayerSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            currentlySelectedPlayer = ((TextView)e.View).Text;
+        }
+
+        /// <summary>
+        /// User has clicked on a player in the ListView.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="event args"></param>
