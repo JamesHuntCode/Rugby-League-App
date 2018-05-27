@@ -21,22 +21,25 @@ namespace RugbyLeagueMobileApp
         Button addPlayer;
         Button save;
         Spinner playerSelector;
-        EditText numberSelector;
-        EditText positionSelector;
+        Spinner numberSelector;
+        Spinner positionSelector;
         ListView addedPlayers;
 
         // Adapters Used:
         ArrayAdapter<string> playerSelectorAdapter  = null;
+        ArrayAdapter<string> playerNumberAdapter = null;
+        ArrayAdapter<string> playerPositionAdapter = null;
         ArrayAdapter<string> addedPlayersAdapter    = null;
 
         // Data Structures Used:
         List<Player> newTeamMembers = new List<Player>();
         List<Player> RawJSONdata;
-        List<string> formattedJSONdata;
         List<string> addedPlayerData;
 
         // Global Variables Used:
         string currentlySelectedPlayer;
+        string currentlySelectedPlayerNumber;
+        string currentlySelectedPlayerPosition;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -48,13 +51,22 @@ namespace RugbyLeagueMobileApp
             // Set Widgets:
             addPlayer        = FindViewById<Button>(Resource.Id.btnAddPlayerToTeam);
             save             = FindViewById<Button>(Resource.Id.btnFinished);
-            numberSelector   = FindViewById<EditText>(Resource.Id.etNumberInput);
-            positionSelector = FindViewById<EditText>(Resource.Id.etPlayerPosition);
+            numberSelector   = FindViewById<Spinner>(Resource.Id.spinnerNumberSelector);
+            positionSelector = FindViewById<Spinner>(Resource.Id.spinnerPositionSelector);
 
-            // Configure Spinner:
+            // Configure Spinners:
+
+            // Names:
             RawJSONdata = services.GetAllPlayerData();
-            formattedJSONdata = new List<string>();
 
+            playerSelector = FindViewById<Spinner>(Resource.Id.spinnerPlayerSelector);
+            playerSelectorAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, Android.Resource.Id.Text1);
+            playerSelectorAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            playerSelector.Adapter = playerSelectorAdapter;
+
+            playerSelector.ItemSelected += (object sender, AdapterView.ItemSelectedEventArgs e) => PlayerSelected(sender, e);
+
+            // Push name selections to adapter
             for (int i = 0; i < RawJSONdata.Count; i++)
             {
                 string displayme = "";
@@ -68,26 +80,40 @@ namespace RugbyLeagueMobileApp
                     displayme = RawJSONdata[i].FirstName + " " + RawJSONdata[i].LastName;
                 }
 
-                formattedJSONdata.Add(displayme);
+                playerSelectorAdapter.Add(displayme);
             }
 
-            playerSelector = FindViewById<Spinner>(Resource.Id.spinnerPlayerSelector);
-            playerSelectorAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, Android.Resource.Id.Text1);
-            playerSelectorAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
-            playerSelector.Adapter = playerSelectorAdapter;
+            // Numbers:
+            numberSelector = FindViewById<Spinner>(Resource.Id.spinnerNumberSelector);
+            playerNumberAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, Android.Resource.Id.Text1);
+            playerNumberAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            numberSelector.Adapter = playerNumberAdapter;
 
-            playerSelector.ItemSelected += (object sender, AdapterView.ItemSelectedEventArgs e) => PlayerSelected(sender, e);
-
-            // Populate & Refresh Spinner Data
-            for (int i = 0; i < formattedJSONdata.Count; i++)
+            // Push number selections to adapter
+            for (int i = 0; i < 13; i++)
             {
-                playerSelectorAdapter.Add(formattedJSONdata[i]);
+                playerNumberAdapter.Add(Convert.ToString(i + 1));
             }
 
-            playerSelectorAdapter.NotifyDataSetChanged();
+            numberSelector.ItemSelected += (object sender, AdapterView.ItemSelectedEventArgs e) => NumberSelected(sender, e);
 
-            // Set currently selected spinner item.
-            currentlySelectedPlayer = playerSelectorAdapter.GetItem(0);
+            // Positions:
+            positionSelector = FindViewById<Spinner>(Resource.Id.spinnerPositionSelector);
+            playerPositionAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, Android.Resource.Id.Text1);
+            playerPositionAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            positionSelector.Adapter = playerPositionAdapter;
+
+            // Push position selections to adapter
+            playerPositionAdapter.Add("Wing");
+            playerPositionAdapter.Add("Centre");
+            playerPositionAdapter.Add("Fly-half");
+            playerPositionAdapter.Add("Scrum-half");
+            playerPositionAdapter.Add("Number Eight");
+            playerPositionAdapter.Add("Flanker");
+            playerPositionAdapter.Add("Hooker");
+            playerPositionAdapter.Add("Prop");
+
+            positionSelector.ItemSelected += (object sender, AdapterView.ItemSelectedEventArgs e) => PositionSelected(sender, e);
 
             // Configure ListView:
             addedPlayerData = new List<string>();
@@ -100,40 +126,24 @@ namespace RugbyLeagueMobileApp
             // Add Player To Team
             addPlayer.Click += delegate
             {
-                if ((positionSelector.Text.Length > 0) && (numberSelector.Text.Length > 0))
-                {
-                    // Capture details:
-                    string line1 = "Name: " + currentlySelectedPlayer;
-                    string line2 = "Number: " + numberSelector.Text;
-                    string line3 = "Position: " + positionSelector.Text;
+                // Capture details:
+                string line1 = "Name: " + currentlySelectedPlayer;
+                string line2 = "Number: " + currentlySelectedPlayerNumber;
+                string line3 = "Position: " + currentlySelectedPlayerPosition;
 
-                    string displayMe = line1 + "\n" + line2 + "\n" + line3;
-                    addedPlayersAdapter.Add(displayMe);
+                string displayMe = line1 + "\n\n" + line2 + "\n\n" + line3;
+                addedPlayersAdapter.Add(displayMe);
 
-                    playerSelectorAdapter.Remove(currentlySelectedPlayer);
+                playerSelectorAdapter.Remove(currentlySelectedPlayer);
+                playerNumberAdapter.Remove(currentlySelectedPlayerNumber);
 
-                    // Push new team member to array:
-                    Player newTeamMember = new Player();
-                    newTeamMember.FirstName = currentlySelectedPlayer.Split(' ')[0];
-                    newTeamMember.LastName = currentlySelectedPlayer.Split(' ')[1];
-                    newTeamMember.PlayerNumber = numberSelector.Text;
-                    newTeamMember.PlayerPosition = positionSelector.Text;
-                    newTeamMembers.Add(newTeamMember);
-
-                    // Prepare for next input:
-                    numberSelector.Text     = "";
-                    positionSelector.Text   = "";
-
-                    // Hide keyboard:
-                    InputMethodManager inputManager = (InputMethodManager)this.GetSystemService(Context.InputMethodService);
-                    inputManager.HideSoftInputFromWindow(this.CurrentFocus.WindowToken, HideSoftInputFlags.NotAlways);
-                    currentlySelectedPlayer = playerSelectorAdapter.GetItem(0);
-                }
-                else
-                {
-                    // Invalid input.
-                    Toast.MakeText(this, "Invalid number or position.", ToastLength.Long).Show();
-                }
+                // Push new team member to array:
+                Player newTeamMember = new Player();
+                newTeamMember.FirstName = currentlySelectedPlayer.Split(' ')[0];
+                newTeamMember.LastName = currentlySelectedPlayer.Split(' ')[1];
+                newTeamMember.PlayerNumber = currentlySelectedPlayerNumber;
+                newTeamMember.PlayerPosition = currentlySelectedPlayerPosition;
+                newTeamMembers.Add(newTeamMember);
             };
 
             // Save Created Team
@@ -161,6 +171,26 @@ namespace RugbyLeagueMobileApp
         protected void PlayerSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             currentlySelectedPlayer = ((TextView)e.View).Text;
+        }
+
+        /// <summary>
+        /// User has selected a number from the drop down list.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void NumberSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            currentlySelectedPlayerNumber = ((TextView)e.View).Text;
+        }
+
+        /// <summary>
+        /// User has selected a position from the drop down list.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void PositionSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            currentlySelectedPlayerPosition = ((TextView)e.View).Text;
         }
 
         /// <summary>

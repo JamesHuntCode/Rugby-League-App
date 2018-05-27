@@ -95,10 +95,11 @@ namespace RugbyLeagueMobileApp
         private List<Player> ReadFile(System.IO.Stream path)
         {
             List<Player> data = new List<Player>();
+            string jsondata;
 
             using (StreamReader SR = new StreamReader(path))
             {
-                string jsondata = SR.ReadToEnd();
+                jsondata = SR.ReadToEnd();
                 data = JsonConvert.DeserializeObject<List<Player>>(jsondata);
             }
 

@@ -25,13 +25,13 @@ public final class R {
         public static final int btnViewTeam=0x7f060011;
         public static final int etFirstName=0x7f060001;
         public static final int etNickname=0x7f060005;
-        public static final int etNumberInput=0x7f06000b;
-        public static final int etPlayerPosition=0x7f06000d;
         public static final int etSurname=0x7f060003;
         public static final int lvNewTeam=0x7f060010;
         public static final int lvPlayers=0x7f060015;
         public static final int lvTeamPlayers=0x7f060017;
+        public static final int spinnerNumberSelector=0x7f06000b;
         public static final int spinnerPlayerSelector=0x7f060009;
+        public static final int spinnerPositionSelector=0x7f06000d;
         public static final int tvAssignNumber=0x7f06000a;
         public static final int tvAssignPosition=0x7f06000c;
         public static final int tvFirstName=0x7f060000;

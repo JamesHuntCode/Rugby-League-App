@@ -93,12 +93,6 @@ namespace RugbyLeagueMobileApp
 			// aapt resource value: 0x7f060005
 			public const int etNickname = 2131099653;
 			
-			// aapt resource value: 0x7f06000b
-			public const int etNumberInput = 2131099659;
-			
-			// aapt resource value: 0x7f06000d
-			public const int etPlayerPosition = 2131099661;
-			
 			// aapt resource value: 0x7f060003
 			public const int etSurname = 2131099651;
 			
@@ -111,8 +105,14 @@ namespace RugbyLeagueMobileApp
 			// aapt resource value: 0x7f060017
 			public const int lvTeamPlayers = 2131099671;
 			
+			// aapt resource value: 0x7f06000b
+			public const int spinnerNumberSelector = 2131099659;
+			
 			// aapt resource value: 0x7f060009
 			public const int spinnerPlayerSelector = 2131099657;
+			
+			// aapt resource value: 0x7f06000d
+			public const int spinnerPositionSelector = 2131099661;
 			
 			// aapt resource value: 0x7f06000a
 			public const int tvAssignNumber = 2131099658;
