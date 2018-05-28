@@ -127,7 +127,7 @@ namespace RugbyLeagueMobileApp
             // Add Player To Team
             addPlayer.Click += delegate
             {
-                if (canAdd)
+                if (canAdd && (currentlySelectedPlayer != "No remaining players."))
                 {
                     // Capture details:
                     string line1 = "Name: " + currentlySelectedPlayer;
@@ -161,12 +161,20 @@ namespace RugbyLeagueMobileApp
                     }
                     else
                     {
+                        playerSelectorAdapter.Add("No remaining players.");
+
+                        playerNumberAdapter.Clear();
+                        playerNumberAdapter.Add("No remaining players.");
+
+                        playerPositionAdapter.Clear();
+                        playerPositionAdapter.Add("No remaining players.");
+
                         canAdd = false;
                     }
                 }
                 else
                 {
-                    Toast.MakeText(this, "You have no players left to allocate.", ToastLength.Long);
+                    Toast.MakeText(this, "You have no players left to allocate.", ToastLength.Long).Show();
                 }
             };
 
@@ -225,6 +233,38 @@ namespace RugbyLeagueMobileApp
         protected void AddedPlayerClicked(object sender, AdapterView.ItemClickEventArgs e)
         {
             string selectedItem = ((TextView)e.View).Text;
+
+            // Generate a popup asking if the user wishes to remove that player from the team.
+            AlertDialog.Builder inform = new AlertDialog.Builder(this);
+            inform.SetTitle("Remove Player?");
+
+            inform.SetMessage("Are you sure you want to remove " + selectedItem.Split(' ')[1].Trim() + " from the team?");
+
+            inform.SetPositiveButton("Yes", delegate
+            {
+                // Remove selected player from team:
+                addedPlayersAdapter.Remove(selectedItem);
+                addedPlayersAdapter.NotifyDataSetChanged();
+
+                // Add removed player data back into spinners
+                string name = (selectedItem.Split(' ')[1].Trim() + " " + selectedItem.Split(' ')[2].Trim()).Split('\n')[0];
+                string number = (selectedItem.Split(' ')[3].Trim()).Split('\n')[0];
+
+                playerSelectorAdapter.Add(name);
+                playerSelectorAdapter.NotifyDataSetChanged();
+
+                playerNumberAdapter.Add(number);
+                playerNumberAdapter.NotifyDataSetChanged();
+
+                inform.Dispose();
+            });
+
+            inform.SetNegativeButton("No", delegate
+            {
+                inform.Dispose();
+            });
+
+            inform.Show();
         }
     }
 }
