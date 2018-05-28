@@ -40,6 +40,7 @@ namespace RugbyLeagueMobileApp
         string currentlySelectedPlayer;
         string currentlySelectedPlayerNumber;
         string currentlySelectedPlayerPosition;
+        bool canAdd = true;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -126,24 +127,47 @@ namespace RugbyLeagueMobileApp
             // Add Player To Team
             addPlayer.Click += delegate
             {
-                // Capture details:
-                string line1 = "Name: " + currentlySelectedPlayer;
-                string line2 = "Number: " + currentlySelectedPlayerNumber;
-                string line3 = "Position: " + currentlySelectedPlayerPosition;
+                if (canAdd)
+                {
+                    // Capture details:
+                    string line1 = "Name: " + currentlySelectedPlayer;
+                    string line2 = "Number: " + currentlySelectedPlayerNumber;
+                    string line3 = "Position: " + currentlySelectedPlayerPosition;
 
-                string displayMe = line1 + "\n\n" + line2 + "\n\n" + line3;
-                addedPlayersAdapter.Add(displayMe);
+                    string displayMe = line1 + "\n\n" + line2 + "\n\n" + line3;
+                    addedPlayersAdapter.Add(displayMe);
 
-                playerSelectorAdapter.Remove(currentlySelectedPlayer);
-                playerNumberAdapter.Remove(currentlySelectedPlayerNumber);
+                    playerSelectorAdapter.Remove(currentlySelectedPlayer);
+                    playerNumberAdapter.Remove(currentlySelectedPlayerNumber);
+                    playerSelectorAdapter.NotifyDataSetChanged();
+                    playerPositionAdapter.NotifyDataSetChanged();
 
-                // Push new team member to array:
-                Player newTeamMember = new Player();
-                newTeamMember.FirstName = currentlySelectedPlayer.Split(' ')[0];
-                newTeamMember.LastName = currentlySelectedPlayer.Split(' ')[1];
-                newTeamMember.PlayerNumber = currentlySelectedPlayerNumber;
-                newTeamMember.PlayerPosition = currentlySelectedPlayerPosition;
-                newTeamMembers.Add(newTeamMember);
+                    // Push new team member to array:
+                    Player newTeamMember = new Player();
+                    newTeamMember.FirstName = currentlySelectedPlayer.Split(' ')[0];
+                    newTeamMember.LastName = currentlySelectedPlayer.Split(' ')[1];
+                    newTeamMember.PlayerNumber = currentlySelectedPlayerNumber;
+                    newTeamMember.PlayerPosition = currentlySelectedPlayerPosition;
+                    newTeamMembers.Add(newTeamMember);
+
+                    // Set new selected values for spinners:
+                    if (playerSelectorAdapter.Count > 0)
+                    {
+                        currentlySelectedPlayer = playerSelectorAdapter.GetItem(0);
+                        currentlySelectedPlayerNumber = playerNumberAdapter.GetItem(0);
+                        currentlySelectedPlayerPosition = playerPositionAdapter.GetItem(0);
+                        playerSelectorAdapter.NotifyDataSetChanged();
+                        playerPositionAdapter.NotifyDataSetChanged();
+                    }
+                    else
+                    {
+                        canAdd = false;
+                    }
+                }
+                else
+                {
+                    Toast.MakeText(this, "You have no players left to allocate.", ToastLength.Long);
+                }
             };
 
             // Save Created Team
