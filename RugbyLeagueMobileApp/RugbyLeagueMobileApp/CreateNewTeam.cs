@@ -162,15 +162,13 @@ namespace RugbyLeagueMobileApp
                     else
                     {
                         playerSelectorAdapter.Add("No remaining players.");
-
-                        playerNumberAdapter.Clear();
-                        playerNumberAdapter.Add("No remaining players.");
-
-                        playerPositionAdapter.Clear();
-                        playerPositionAdapter.Add("No remaining players.");
+                        playerSelectorAdapter.NotifyDataSetChanged();
 
                         canAdd = false;
                     }
+
+                    // Scroll to most recently added element:
+                    addedPlayers.SmoothScrollToPositionFromTop(addedPlayersAdapter.Count, 0);
                 }
                 else
                 {
@@ -250,6 +248,16 @@ namespace RugbyLeagueMobileApp
                 string name = (selectedItem.Split(' ')[1].Trim() + " " + selectedItem.Split(' ')[2].Trim()).Split('\n')[0];
                 string number = (selectedItem.Split(' ')[3].Trim()).Split('\n')[0];
 
+                // See if there are any remaining players
+                bool noPlayersRemaining = ArraySearch("No remaining players.", playerSelectorAdapter);
+
+                if (noPlayersRemaining)
+                {
+                    playerSelectorAdapter.Clear();
+                    currentlySelectedPlayer = name;
+                    canAdd = true;
+                }
+
                 playerSelectorAdapter.Add(name);
                 playerSelectorAdapter.NotifyDataSetChanged();
 
@@ -265,6 +273,25 @@ namespace RugbyLeagueMobileApp
             });
 
             inform.Show();
+        }
+
+        /// <summary>
+        /// Method to linear search through an array adapter for a specified string.
+        /// </summary>
+        /// <param name="searchFor"></param>
+        /// <param name="searchThrough"></param>
+        /// <returns></returns>
+        protected bool ArraySearch(string searchFor, ArrayAdapter searchThrough)
+        {
+            for (int i = 0; i < searchThrough.Count; i++)
+            {
+                if (searchFor == searchThrough.GetItem(i).ToString())
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
