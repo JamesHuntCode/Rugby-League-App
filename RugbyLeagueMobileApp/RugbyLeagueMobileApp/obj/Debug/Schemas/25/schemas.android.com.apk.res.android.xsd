@@ -2,7 +2,7 @@
 <xs:schema xmlns:android="http://schemas.android.com/apk/res/android" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res/android" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>28/05/2018 01:24:22</xs:documentation>
+    <xs:documentation>28/05/2018 19:14:41</xs:documentation>
   </xs:annotation>
   <xs:attribute name="accessibilityLiveRegion">
     <xs:annotation>
@@ -16943,11 +16943,11 @@
           <xs:restriction base="xs:string">
             <xs:enumeration value="@+id/" />
             <xs:enumeration value="@+id/checkedTextView1" />
-            <xs:enumeration value="@id/btnAddNewPlayerToTeam" />
             <xs:enumeration value="@id/btnAddPlayer" />
             <xs:enumeration value="@id/btnAddPlayerToTeam" />
             <xs:enumeration value="@id/btnCreateNewTeam" />
             <xs:enumeration value="@id/btnFinished" />
+            <xs:enumeration value="@id/btnOverrideCurrentTeam" />
             <xs:enumeration value="@id/btnReturnHome" />
             <xs:enumeration value="@id/btnSaveNewPlayer" />
             <xs:enumeration value="@id/btnViewPlayerData" />

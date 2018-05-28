@@ -14,11 +14,11 @@ public final class R {
         public static final int icon=0x7f020000;
     }
     public static final class id {
-        public static final int btnAddNewPlayerToTeam=0x7f060016;
         public static final int btnAddPlayer=0x7f060014;
         public static final int btnAddPlayerToTeam=0x7f06000e;
         public static final int btnCreateNewTeam=0x7f060012;
         public static final int btnFinished=0x7f06000f;
+        public static final int btnOverrideCurrentTeam=0x7f060016;
         public static final int btnReturnHome=0x7f060007;
         public static final int btnSaveNewPlayer=0x7f060006;
         public static final int btnViewPlayerData=0x7f060013;

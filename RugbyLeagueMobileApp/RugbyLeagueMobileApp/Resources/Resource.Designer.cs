@@ -60,9 +60,6 @@ namespace RugbyLeagueMobileApp
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060016
-			public const int btnAddNewPlayerToTeam = 2131099670;
-			
 			// aapt resource value: 0x7f060014
 			public const int btnAddPlayer = 2131099668;
 			
@@ -74,6 +71,9 @@ namespace RugbyLeagueMobileApp
 			
 			// aapt resource value: 0x7f06000f
 			public const int btnFinished = 2131099663;
+			
+			// aapt resource value: 0x7f060016
+			public const int btnOverrideCurrentTeam = 2131099670;
 			
 			// aapt resource value: 0x7f060007
 			public const int btnReturnHome = 2131099655;

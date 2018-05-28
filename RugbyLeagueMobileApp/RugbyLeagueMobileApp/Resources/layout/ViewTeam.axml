@@ -5,7 +5,7 @@
     android:padding="10dp"
     android:layout_height="match_parent">
     <Button
-        android:text="Add Player To Team"
+        android:text="Create New Team"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
@@ -13,7 +13,7 @@
         android:textSize="22sp"
         android:background="#117BF3"
         android:textColor="#ffffff"
-        android:id="@+id/btnAddNewPlayerToTeam" />
+        android:id="@+id/btnOverrideCurrentTeam" />
     <ListView
         android:minWidth="25px"
         android:minHeight="25px"
