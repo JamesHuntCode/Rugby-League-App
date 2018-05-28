@@ -38,6 +38,15 @@ namespace RugbyLeagueMobileApp
         }
 
         /// <summary>
+        /// Method to read all team data from json file.
+        /// </summary>
+        /// <returns></returns>
+        public List<Player> GetTeamData()
+        {
+            return ReadFile(teamdata);
+        }
+
+        /// <summary>
         /// Method to add a new player to JSON data file.
         /// </summary>
         /// <param name="newPlayer"></param>

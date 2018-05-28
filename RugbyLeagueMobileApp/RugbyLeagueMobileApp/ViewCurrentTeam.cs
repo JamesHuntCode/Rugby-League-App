@@ -21,7 +21,9 @@ namespace RugbyLeagueMobileApp
         ListView teamPlayers;
 
         // Data Structures Used:
-        List<Player> teamData = new List<Player>();
+        List<Player> teamData;
+        List<string> formattedTeamData = new List<string>();
+        ArrayAdapter<string> teamDataAdapter = null;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -36,7 +38,24 @@ namespace RugbyLeagueMobileApp
 
             // Configure ListView:
 
+            // Push formatted team data to list view:
+            teamData = services.GetTeamData();
 
+            for (int i = 0; i < teamData.Count; i++)
+            {
+                Player currentInLoop = teamData[i];
+
+                string line1 = "Name: " + currentInLoop.FirstName + " " + currentInLoop.LastName;
+                string line2 = "Number: " + currentInLoop.PlayerNumber;
+                string line3 = "Position: " + currentInLoop.PlayerPosition;
+
+                string displayMe = line1 + "\n\n" + line2 + "\n\n" + line3;
+
+                formattedTeamData.Add(displayMe);
+            }
+
+            teamDataAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, formattedTeamData);
+            teamPlayers.Adapter = teamDataAdapter;
 
             // Handle Clicks:
 

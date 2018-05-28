@@ -1,3 +1,37 @@
 ﻿[
-
+  {
+    "FirstName": "James",
+    "LastName": "Hunt",
+    "Nickname": "",
+    "PlayerNumber": "",
+    "PlayerPosition": ""
+  },
+  {
+    "FirstName": "Stephanie",
+    "LastName": "Nicks",
+    "Nickname": "",
+    "PlayerNumber": "",
+    "PlayerPosition": ""
+  },
+  {
+    "FirstName": "Axel",
+    "LastName": "Nicks",
+    "Nickname": "",
+    "playerNumber": "",
+    "playerPosition": ""
+  },
+  {
+    "FirstName": "Dave",
+    "LastName": "Johns",
+    "Nickname": "",
+    "PlayerNumber": "",
+    "PlayerPosition": ""
+  },
+  {
+    "FirstName": "Eric",
+    "LastName": "Smiths",
+    "Nickname": "",
+    "PlayerNumber": "",
+    "PlayerPosition": ""
+  }
 ]
