@@ -82,8 +82,6 @@ namespace RugbyLeagueMobileApp
 
                 confirm.SetNegativeButton("No", delegate
                 {
-                    Toast.MakeText(this, "Creation of new team cancelled.", ToastLength.Long).Show();
-
                     confirm.Dispose();
                 });
 
