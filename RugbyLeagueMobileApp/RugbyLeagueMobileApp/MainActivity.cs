@@ -10,16 +10,25 @@ namespace RugbyLeagueMobileApp
     [Activity(Label = "Team Designer", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        private AppServices services = new AppServices();
-        private string currentUser = "Axel";
+        private AppServices services;
+        private string currentUser;
 
         // Widgets Used:
         Button viewCurrentTeam;
         Button createNewTeam;
         Button viewPlayerData;
 
+        protected override void OnRestart()
+        {
+            base.OnRestart();
+            base.Recreate();
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            services = new AppServices();
+            currentUser = "Axel";
+
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.Main);
