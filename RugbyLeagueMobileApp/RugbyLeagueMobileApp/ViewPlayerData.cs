@@ -34,6 +34,8 @@ namespace RugbyLeagueMobileApp
 
             SetContentView(Resource.Layout.ViewPlayers);
             ActionBar.Title = "View All Players";
+            ActionBar.SetHomeButtonEnabled(true);
+            ActionBar.SetDisplayHomeAsUpEnabled(true);
 
             // Set Widgets:
             addNewPlayer = FindViewById<Button>(Resource.Id.btnAddPlayer);
@@ -74,6 +76,24 @@ namespace RugbyLeagueMobileApp
 
             // Players ListView
             players.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => PlayerClicked(sender, e);
+        }
+
+        /// <summary>
+        /// User has selected to go home on the action bar.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Android.Resource.Id.Home:
+                    Finish();
+                    return true;
+
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
         }
 
         /// <summary>

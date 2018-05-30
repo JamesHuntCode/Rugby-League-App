@@ -48,6 +48,8 @@ namespace RugbyLeagueMobileApp
 
             SetContentView(Resource.Layout.CreateTeam);
             ActionBar.Title = "Create New Team";
+            ActionBar.SetHomeButtonEnabled(true);
+            ActionBar.SetDisplayHomeAsUpEnabled(true);
 
             // Set Widgets:
             addPlayer        = FindViewById<Button>(Resource.Id.btnAddPlayerToTeam);
@@ -274,6 +276,24 @@ namespace RugbyLeagueMobileApp
             });
 
             inform.Show();
+        }
+
+        /// <summary>
+        /// User has selected to go home on the action bar.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Android.Resource.Id.Home:
+                    Finish();
+                    return true;
+
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
         }
 
         /// <summary>
