@@ -106,6 +106,7 @@ namespace RugbyLeagueMobileApp
 
             // Push position selections to adapter
             playerPositionAdapter.Add("Wing");
+            playerPositionAdapter.Add("Loose Forward");
             playerPositionAdapter.Add("Centre");
             playerPositionAdapter.Add("Fly-half");
             playerPositionAdapter.Add("Scrum-half");

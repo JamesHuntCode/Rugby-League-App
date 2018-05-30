@@ -21,12 +21,12 @@ namespace RugbyLeagueMobileApp
         /// <summary>
         /// Path of JSON file which contains player data.
         /// </summary>
-        private System.IO.Stream playerdata = Application.Context.Assets.Open("playerdata.json");
+        private string playerdata = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "playerdata.json");
 
         /// <summary>
         /// Path of JSON file which contains team summary data.
         /// </summary>
-        private System.IO.Stream teamdata = Application.Context.Assets.Open("team.json");
+        private string teamdata = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "team.json");
 
         /// <summary>
         /// Method to read all data from player data json file.
@@ -101,19 +101,36 @@ namespace RugbyLeagueMobileApp
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        private List<Player> ReadFile(System.IO.Stream path)
+        private List<Player> ReadFile(string path)
         {
-            List<Player> data = new List<Player>();
-            StreamReader reader = new StreamReader(path);
-
-            if (reader == null)
+            if (!(File.Exists(path)))
             {
-                reader = new StreamReader(path);
+                File.Create(path).Dispose();
+
+                Player initialPlayer = new Player();
+
+                if (path == playerdata)
+                {
+                    initialPlayer.FirstName = "Axel";
+                    initialPlayer.LastName = "Nicks";                  
+                }
+                else
+                {
+                    initialPlayer.FirstName = "Axel";
+                    initialPlayer.LastName = "Nicks";
+                    initialPlayer.PlayerNumber = "13";
+                    initialPlayer.PlayerPosition = "Loose Forward";
+                }
+
+                List<Player> initialPlayers = new List<Player>() { initialPlayer };
+
+                WriteFile(path, initialPlayers);
             }
-            
-            string jsondata = reader.ReadToEnd();
+
+            List<Player> data = new List<Player>();
+
+            string jsondata = File.ReadAllText(path);         
             data = JsonConvert.DeserializeObject<List<Player>>(jsondata);
-            reader = null;
 
             return data;
         }
@@ -124,14 +141,10 @@ namespace RugbyLeagueMobileApp
         /// <param name="path"></param>
         /// <param name="data"></param>
         /// <returns></returns>
-        private void WriteFile(System.IO.Stream path, List<Player> data)
+        private void WriteFile(string path, List<Player> data)
         {
-            string updatedJSONdata = JsonConvert.SerializeObject(data, Formatting.Indented);
-
-            using (StreamWriter SW = new StreamWriter(path))
-            {
-                SW.Write(updatedJSONdata);
-            }
+            string json = JsonConvert.SerializeObject(data, Formatting.Indented);
+            File.WriteAllText(path, json);
         }
     }
 }
