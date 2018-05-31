@@ -72,16 +72,7 @@ namespace RugbyLeagueMobileApp
             // Push name selections to adapter
             for (int i = 0; i < RawJSONdata.Count; i++)
             {
-                string displayme = "";
-
-                if (RawJSONdata[i].Nickname != String.Empty && RawJSONdata[i].Nickname != null)
-                {
-                    displayme = RawJSONdata[i].Nickname;
-                }
-                else
-                {
-                    displayme = RawJSONdata[i].FirstName + " " + RawJSONdata[i].LastName;
-                }
+                string displayme = RawJSONdata[i].FirstName + " " + RawJSONdata[i].LastName;
 
                 playerSelectorAdapter.Add(displayme);
             }
