@@ -84,7 +84,7 @@ namespace RugbyLeagueMobileApp
             numberSelector.Adapter = playerNumberAdapter;
 
             // Push number selections to adapter
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < 20; i++)
             {
                 playerNumberAdapter.Add(Convert.ToString(i + 1));
             }
@@ -101,10 +101,10 @@ namespace RugbyLeagueMobileApp
             playerPositionAdapter.Add("Wing");
             playerPositionAdapter.Add("Loose Forward");
             playerPositionAdapter.Add("Centre");
-            playerPositionAdapter.Add("Fly-half");
-            playerPositionAdapter.Add("Scrum-half");
-            playerPositionAdapter.Add("Number Eight");
-            playerPositionAdapter.Add("Flanker");
+            playerPositionAdapter.Add("Standoff");
+            playerPositionAdapter.Add("5 / 8");
+            playerPositionAdapter.Add("Second Row");
+            playerPositionAdapter.Add("Sub");
             playerPositionAdapter.Add("Hooker");
             playerPositionAdapter.Add("Prop");
 
